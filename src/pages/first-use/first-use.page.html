@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hello Ionic</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Welcome to plant waterer</h3>
+
+  <p>Add a picture for you're first plant!</p>
+
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+  <div class="profile-image-wrapper">
+    <button (click)="getPicture()">Add picture</button>
+    <div class="profile-image-placeholder">
+      <ion-icon name="add"></ion-icon>
+      <div>
+        'ITEM_CREATE_CHOOSE_IMAGE'
+      </div>
+    </div>
+  </div>
+
+  <button (click)="goToSetupWaterSchedule()">Water schedule</button>
+  <p>
+    <button ion-button color="primary" menuToggle>Toggle Menu</button>
+  </p>
+
+</ion-content>

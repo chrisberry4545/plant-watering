@@ -1,0 +1,22 @@
+
+  <div *ngIf="plant">
+
+    <img *ngIf="plant.picture" [src]="plant.picture.url" (click)="swapPicture()" />
+
+    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+    <div *ngIf="!plant.picture" class="profile-image-wrapper">
+      <button ion-button (click)="swapPicture()">
+        <ion-icon name="add"></ion-icon>
+        Add picture
+      </button>
+    </div>
+
+    <ion-item>
+      <ion-label>{{ plant.daysBetweenWatering }} days</ion-label>
+      <ion-range min="1" max="14" step="1" snaps="true" color="secondary" [(ngModel)]="plant.daysBetweenWatering"></ion-range>
+    </ion-item>
+
+    <button ion-button outline (click)="cancel()">Cancel</button>
+
+    <button ion-button (click)="save()">Save</button>
+  </div>

@@ -1,0 +1,25 @@
+<!--
+  Generated template for the PlantEditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>plant-edit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>Plant</h2>
+  <plant-form-component
+    [plant]="plant"
+    (onCancel)="cancel()"
+    (onSave)="save($event)">
+  </plant-form-component>
+
+</ion-content>
