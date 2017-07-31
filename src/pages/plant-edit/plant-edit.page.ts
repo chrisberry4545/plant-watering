@@ -34,7 +34,6 @@ export class PlantEditPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PlantEditPage');
     const plantToEdit = this.navParams.get('plant');
     if (plantToEdit) {
       this.plant = plantToEdit;

@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  Output,
 } from '@angular/core';
 
 @Component({

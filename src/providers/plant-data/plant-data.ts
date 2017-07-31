@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
 import { Storage } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import {
   PlantInterface,
@@ -23,15 +24,28 @@ export class PlantDataProvider {
 
   constructor(
     private _storage: Storage,
+    private _localNotification: LocalNotifications,
   ) {}
 
+  public pushTest() {
+    // Schedule a single notification
+    this._localNotification.schedule({
+      id: 1,
+      text: 'Single ILocalNotification',
+    });
+  }
+
   public getPlants(): Observable<PlantInterface[]> {
+    this.pushTest();
     if (this._plants) {
       return Observable.of(this._plants);
     }
     return Observable.fromPromise(this._storage.get(
       this._plantStorageName
-    ));
+    )).map((plants) => {
+      this._plants = plants ? plants : [];
+      return this._plants;
+    });
   }
 
   public addPlant(plant: PlantInterface) {
