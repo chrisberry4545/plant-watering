@@ -27,14 +27,12 @@ export class PlantsListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private _plantDataProvider: PlantDataProvider,
-  ) {
-  }
+  ) {}
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this._plantDataProvider.getPlants().subscribe((plants) => {
       this.plants = plants;
     });
-    console.log('ionViewDidLoad PlantsListPage');
   }
 
   public editPlant(plant: PlantInterface) {

@@ -73,6 +73,10 @@ export class PlantFormComponent {
     reader.readAsDataURL(event.target.files[0]);
   }
 
+  public delete() {
+    this.onDelete.emit();
+  }
+
   public cancel() {
     this.onCancel.emit();
   }

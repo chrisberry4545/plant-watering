@@ -8,6 +8,13 @@
           (click)="swapPicture()"
           class="c-plant-form__image" />
 
+        <button class="c-plant-form__delete-btn"
+          *ngIf="showDelete"
+          (click)="delete()"
+          ion-button round color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+
 
         <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
         <button clear class="c-plant-form__add-picture"

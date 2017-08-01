@@ -68,6 +68,13 @@ export class PlantDataProvider {
     this._updateStorage();
   }
 
+  public deletePlant(plantToDelete: PlantInterface) {
+    this._plants = this._plants.filter((plant) => (
+      plant !== plantToDelete
+    ));
+    this._updateStorage();
+  }
+
   private _updateStorage() {
     this._storage.set(
       this._plantStorageName,

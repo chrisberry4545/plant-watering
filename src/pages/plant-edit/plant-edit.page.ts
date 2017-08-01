@@ -48,8 +48,15 @@ export class PlantEditPage {
     }
   }
 
+  public delete() {
+    this._plantDataProvider.deletePlant(
+      this.plant,
+    );
+    this._goBack();
+  }
+
   public cancel() {
-    this.navCtrl.pop();
+    this._goBack();
   }
 
   public save(plant: PlantInterface) {
@@ -66,6 +73,10 @@ export class PlantEditPage {
     } else {
       this._plantDataProvider.updatePlant(plant);
     }
+    this._goBack();
+  }
+
+  private _goBack() {
     this.navCtrl.pop();
   }
 

@@ -11,6 +11,13 @@
   transform: translate(-50%, -50%);
 }
 
+.c-plant-form__delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .c-plant-form__add-picture {
   position: absolute;
   top: 0;
