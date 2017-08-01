@@ -12,7 +12,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <div class="c-plant-list__cards">
     <ion-card *ngFor="let plant of plants" (click)="editPlant(plant)">
@@ -26,8 +25,8 @@
   </div>
 
   <div class="c-plant-list__add-btn-wrapper">
-    <button class="c-plant-list__add-btn" ion-button (click)="addPlant()" large block>
-      <ion-icon name="add"></ion-icon>
+    <button class="c-plant-list__add-btn" ion-button (click)="addPlant()" block>
+      Add a plant
     </button>
   </div>
 

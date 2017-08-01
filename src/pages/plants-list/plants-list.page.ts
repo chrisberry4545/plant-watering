@@ -29,7 +29,7 @@ export class PlantsListPage {
     private _plantDataProvider: PlantDataProvider,
   ) {}
 
-  ionViewDidEnter() {
+  public ionViewDidEnter() {
     this._plantDataProvider.getPlants().subscribe((plants) => {
       this.plants = plants;
     });

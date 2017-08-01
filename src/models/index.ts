@@ -3,5 +3,5 @@ export {
 } from './picture.interface';
 
 export {
-  default as PlantInterface
+  default as PlantInterface,
 } from './plant.interface';
