@@ -14,22 +14,21 @@
 
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row *ngFor="let plant of plants" (click)="editPlant(plant)">
-      <ion-col col-4>
-        <img *ngIf="plant.picture" [src]="plant.picture.url" />
-      </ion-col>
-      <ion-col col-8>
+  <div class="c-plant-list__cards">
+    <ion-card *ngFor="let plant of plants" (click)="editPlant(plant)">
+      <img *ngIf="plant.picture" [src]="plant.picture.url" />
+      <ion-card-content>
         <days-before-water-component
-          [daysBeforeWater]="plant.daysBetweenWatering"
-        >
+          [daysBeforeWater]="plant.daysBetweenWatering">
         </days-before-water-component>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-  <button ion-button (click)="addPlant()">
-    <ion-icon name="add"></ion-icon>
-  </button>
+  <div class="c-plant-list__add-btn-wrapper">
+    <button class="c-plant-list__add-btn" ion-button (click)="addPlant()" large block>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </div>
 
 </ion-content>

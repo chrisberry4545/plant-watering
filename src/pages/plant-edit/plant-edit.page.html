@@ -7,19 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>plant-edit</ion-title>
+    <ion-title>{{ isCreate ? 'Add a plant' : 'Edit plant' }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-  <h2>Plant</h2>
   <plant-form-component
     [plant]="plant"
+    [showDelete]="!isCreate"
     (onCancel)="cancel()"
-    (onSave)="save($event)">
+    (onSave)="save($event)"
+    (onDelete)="delete()"
+    >
   </plant-form-component>
 
 </ion-content>

@@ -26,11 +26,17 @@ export class PlantFormComponent {
   @Input()
   public plant: PlantInterface;
 
+  @Input()
+  public showDelete: boolean;
+
   @Output()
   public onCancel = new EventEmitter();
 
   @Output()
   public onSave = new EventEmitter<PlantInterface>();
+
+  @Output()
+  public onDelete = new EventEmitter();
 
   constructor(
     private _camera: Camera,

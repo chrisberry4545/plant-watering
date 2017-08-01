@@ -25,7 +25,7 @@ export class PlantEditPage {
 
   public plant: PlantInterface;
 
-  private _isCreate: boolean;
+  public isCreate: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -37,14 +37,14 @@ export class PlantEditPage {
     const plantToEdit = this.navParams.get('plant');
     if (plantToEdit) {
       this.plant = plantToEdit;
-      this._isCreate = false;
+      this.isCreate = false;
     } else {
       this.plant = {
         id: plantId,
         daysBetweenWatering: 5,
       } as PlantInterface;
       plantId++;
-      this._isCreate = true;
+      this.isCreate = true;
     }
   }
 
@@ -52,9 +52,17 @@ export class PlantEditPage {
     this.navCtrl.pop();
   }
 
-  public save(plant) {
-    if (this._isCreate) {
-      this._plantDataProvider.addPlant(plant);
+  public save(plant: PlantInterface) {
+    if (this.isCreate) {
+      const dateNow = new Date();
+      this._plantDataProvider.addPlant({
+        ...plant,
+        nextWaterDate: new Date(
+          dateNow.getUTCFullYear(),
+          dateNow.getUTCMonth(),
+          dateNow.getDay() + plant.daysBetweenWatering,
+        ),
+      });
     } else {
       this._plantDataProvider.updatePlant(plant);
     }
