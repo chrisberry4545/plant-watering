@@ -9,7 +9,6 @@ interface Plant {
   picture: PictureInterface;
   daysBetweenWatering: number;
   firstWaterDate: Date;
-  notifications: ILocalNotification[];
 }
 
 export default Plant;

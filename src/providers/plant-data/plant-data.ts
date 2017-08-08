@@ -75,26 +75,28 @@ export class PlantDataProvider {
   }
 
   private _setUpNotifications(plant: PlantInterface) {
-    let dateOfLastNotification = new Date();
-    const todayPlusOneYear = new Date();
-    todayPlusOneYear.setUTCFullYear(
-      todayPlusOneYear.getUTCFullYear() + 1,
-    );
-    plant.notifications.push({
+    this._localNotification.schedule({
+      id: 1,
       text: 'First water reminder',
-      firstAt: plant.firstWaterDate
+      firstAt: plant.firstWaterDate,
+      data: plant,
     });
-    while(plant.notifications.length < 10) {
-      dateOfLastNotification.setDate(
-        dateOfLastNotification.getDate() + plant.daysBetweenWatering,
-      );
-      plant.notifications.push({
-        text: 'I could do with a water',
-        firstAt: dateOfLastNotification,
-      });
-    }
-    this._localNotification.schedule(
-      plant.notifications,
-    );
+
+    this._localNotification.on('click', (notification) => {
+      const plantFromNotification =
+        notification.data as PlantInterface;
+      if (notification.id === 1) {
+        const dateOfNextNotification = new Date();
+        dateOfNextNotification.setDate(
+          dateOfNextNotification.getDate() + plant.daysBetweenWatering,
+        );
+        this._localNotification.schedule({
+          id: 2,
+          text: 'Second water reminder',
+          firstAt: dateOfNextNotification,
+          data: plantFromNotification,
+        });
+      }
+    });
   }
 }
