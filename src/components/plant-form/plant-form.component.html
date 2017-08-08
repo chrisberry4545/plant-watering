@@ -11,7 +11,8 @@
         <button class="c-plant-form__delete-btn"
           *ngIf="showDelete"
           (click)="delete()"
-          ion-button round color="danger">
+          outline
+          ion-button round color="secondary">
           <ion-icon name="trash"></ion-icon>
         </button>
 
@@ -25,8 +26,9 @@
       </div>
 
       <ion-item>
-        <ion-label>{{ plant.daysBetweenWatering }} days</ion-label>
-        <ion-range min="1" max="14" step="1" snaps="true" color="secondary" [(ngModel)]="plant.daysBetweenWatering"></ion-range>
+        <ion-label>Days between watering: {{ plant.daysBetweenWatering }}</ion-label>
+        <ion-range min="1" max="14" step="1" snaps="true" color="primary" [(ngModel)]="plant.daysBetweenWatering"></ion-range>
+        <p>{{ plant.daysBetweenWatering }} days</p>
       </ion-item>
     </ion-card>
 
