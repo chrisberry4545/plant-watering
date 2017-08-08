@@ -64,7 +64,7 @@ export class PlantEditPage {
       const dateNow = new Date();
       this._plantDataProvider.addPlant({
         ...plant,
-        nextWaterDate: new Date(
+        firstWaterDate: new Date(
           dateNow.getUTCFullYear(),
           dateNow.getUTCMonth(),
           dateNow.getDay() + plant.daysBetweenWatering,

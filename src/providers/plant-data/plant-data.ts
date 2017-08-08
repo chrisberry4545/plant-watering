@@ -27,16 +27,7 @@ export class PlantDataProvider {
     private _localNotification: LocalNotifications,
   ) {}
 
-  public pushTest() {
-    // Schedule a single notification
-    this._localNotification.schedule({
-      id: 1,
-      text: 'Single ILocalNotification',
-    });
-  }
-
   public getPlants(): Observable<PlantInterface[]> {
-    this.pushTest();
     if (this._plants) {
       return Observable.of(this._plants);
     }
@@ -50,6 +41,7 @@ export class PlantDataProvider {
 
   public addPlant(plant: PlantInterface) {
     this._plants.push(plant);
+    this._setUpNotifications(plant);
     this._updateStorage();
   }
 
@@ -82,4 +74,27 @@ export class PlantDataProvider {
     );
   }
 
+  private _setUpNotifications(plant: PlantInterface) {
+    let dateOfLastNotification = new Date();
+    const todayPlusOneYear = new Date();
+    todayPlusOneYear.setUTCFullYear(
+      todayPlusOneYear.getUTCFullYear() + 1,
+    );
+    plant.notifications.push({
+      text: 'First water reminder',
+      firstAt: plant.firstWaterDate
+    });
+    while(plant.notifications.length < 10) {
+      dateOfLastNotification.setDate(
+        dateOfLastNotification.getDate() + plant.daysBetweenWatering,
+      );
+      plant.notifications.push({
+        text: 'I could do with a water',
+        firstAt: dateOfLastNotification,
+      });
+    }
+    this._localNotification.schedule(
+      plant.notifications,
+    );
+  }
 }
