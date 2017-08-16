@@ -7,17 +7,19 @@
 
 <ion-content padding>
   <div class="c-plant-list__cards">
-    <ion-card *ngFor="let plant of plants" (click)="editPlant(plant)">
-      <img *ngIf="plant.picture" [src]="plant.picture.url" />
-      <ion-card-content>
-        <days-before-water-component
-          [daysBeforeWater]="plant.daysBetweenWatering">
-        </days-before-water-component>
-      </ion-card-content>
-    </ion-card>
+    <div class="c-plant-list__info" *ngFor="let plant of plants">
+      <ion-card (click)="editPlant(plant)">
+        <img *ngIf="plant.picture" [src]="plant.picture.url" />
+        <ion-card-content>
+          <days-before-water-component
+            [daysBeforeWater]="plant.daysBetweenWatering">
+          </days-before-water-component>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 
-  <div class="c-plant-list__add-btn-wrapper">
+  <div class="c-plant-list__add-btn-wrapper" padding>
     <button class="c-plant-list__add-btn" ion-button (click)="addPlant()" block>
       Add a plant
     </button>
