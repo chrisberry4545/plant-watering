@@ -45,9 +45,10 @@ export class PlantFormComponent {
   public swapPicture() {
       if (Camera['installed']()) {
         this._camera.getPicture({
+          allowEdit: true,
           destinationType: this._camera.DestinationType.DATA_URL,
-          targetWidth: -1,
-          targetHeight: -1,
+          targetWidth: 640,
+          targetHeight: 480,
           correctOrientation: true
         }).then((data) => {
           const profilePic = 'data:image/jpg;base64,' + data;
