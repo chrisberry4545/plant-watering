@@ -46,8 +46,9 @@ export class PlantFormComponent {
       if (Camera['installed']()) {
         this._camera.getPicture({
           destinationType: this._camera.DestinationType.DATA_URL,
-          targetWidth: 96,
-          targetHeight: 96
+          targetWidth: -1,
+          targetHeight: -1,
+          correctOrientation: true
         }).then((data) => {
           const profilePic = 'data:image/jpg;base64,' + data;
           this.plant.picture = {
