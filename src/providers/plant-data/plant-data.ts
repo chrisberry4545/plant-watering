@@ -41,7 +41,7 @@ export class PlantDataProvider {
 
   public addPlant(plant: PlantInterface) {
     this._plants.push(plant);
-    this._setUpNotifications(plant);
+    this._scheduleWaterNotification(plant);
     this._updateStorage();
   }
 
@@ -60,6 +60,16 @@ export class PlantDataProvider {
     this._updateStorage();
   }
 
+  public setWatered(plant: PlantInterface) {
+    const nextWaterDate = new Date();
+    nextWaterDate.setDate(
+      nextWaterDate.getDate() + plant.daysBetweenWatering,
+    );
+    plant.nextWaterDate = nextWaterDate;
+    this.updatePlant(plant);
+    this._scheduleWaterNotification(plant);
+  }
+
   public deletePlant(plantToDelete: PlantInterface) {
     this._plants = this._plants.filter((plant) => (
       plant !== plantToDelete
@@ -74,29 +84,10 @@ export class PlantDataProvider {
     );
   }
 
-  private _setUpNotifications(plant: PlantInterface) {
+  private _scheduleWaterNotification(plant: PlantInterface) {
     this._localNotification.schedule({
-      id: 1,
-      text: 'First water reminder',
-      firstAt: plant.firstWaterDate,
-      data: plant,
-    });
-
-    this._localNotification.on('click', (notification) => {
-      const plantFromNotification =
-        notification.data as PlantInterface;
-      if (notification.id === 1) {
-        const dateOfNextNotification = new Date();
-        dateOfNextNotification.setDate(
-          dateOfNextNotification.getDate() + plant.daysBetweenWatering,
-        );
-        this._localNotification.schedule({
-          id: 2,
-          text: 'Second water reminder',
-          firstAt: dateOfNextNotification,
-          data: plantFromNotification,
-        });
-      }
+      text: 'I need a water!',
+      firstAt: plant.nextWaterDate,
     });
   }
 }

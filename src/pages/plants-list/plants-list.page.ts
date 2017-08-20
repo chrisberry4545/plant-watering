@@ -35,10 +35,20 @@ export class PlantsListPage {
     });
   }
 
-  public editPlant(plant: PlantInterface) {
+  public editPlant(
+    plant: PlantInterface,
+  ) {
     this.navCtrl.push(PlantEditPage, {
       plant,
     });
+  }
+
+  public wateredPlant(
+    plant: PlantInterface,
+    event: MouseEvent,
+  ) {
+    event.stopPropagation();
+    this._plantDataProvider.setWatered(plant);
   }
 
   public addPlant() {

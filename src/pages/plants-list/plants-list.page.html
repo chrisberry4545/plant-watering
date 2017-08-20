@@ -14,6 +14,12 @@
           <days-before-water-component
             [daysBeforeWater]="plant.daysBetweenWatering">
           </days-before-water-component>
+
+          <button
+            (click)="wateredPlant(plant, $event)"
+            class="c-plant-list__watered-btn" ion-button>
+              Watered it!
+          </button>
         </ion-card-content>
       </ion-card>
     </div>

@@ -8,7 +8,7 @@ interface Plant {
   id: number;
   picture: PictureInterface;
   daysBetweenWatering: number;
-  firstWaterDate: Date;
+  nextWaterDate: Date;
 }
 
 export default Plant;
