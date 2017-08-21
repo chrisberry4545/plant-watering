@@ -42,10 +42,12 @@ export class PlantEditPage {
       this.plant = {
         id: plantId,
         daysBetweenWatering: 5,
+        nextWaterDate: new Date().toISOString(),
       } as PlantInterface;
       plantId++;
       this.isCreate = true;
     }
+    console.log(this.plant.nextWaterDate);
   }
 
   public delete() {
@@ -62,14 +64,9 @@ export class PlantEditPage {
   public save(plant: PlantInterface) {
     if (this.isCreate) {
       const dateNow = new Date();
-      this._plantDataProvider.addPlant({
-        ...plant,
-        nextWaterDate: new Date(
-          dateNow.getUTCFullYear(),
-          dateNow.getUTCMonth(),
-          dateNow.getDay() + plant.daysBetweenWatering,
-        ),
-      });
+      this._plantDataProvider.addPlant(
+        plant,
+      );
     } else {
       this._plantDataProvider.updatePlant(plant);
     }

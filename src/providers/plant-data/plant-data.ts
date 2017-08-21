@@ -65,7 +65,7 @@ export class PlantDataProvider {
     nextWaterDate.setDate(
       nextWaterDate.getDate() + plant.daysBetweenWatering,
     );
-    plant.nextWaterDate = nextWaterDate;
+    plant.nextWaterDate = nextWaterDate.toISOString();
     this.updatePlant(plant);
     this._scheduleWaterNotification(plant);
   }
@@ -87,7 +87,7 @@ export class PlantDataProvider {
   private _scheduleWaterNotification(plant: PlantInterface) {
     this._localNotification.schedule({
       text: 'I need a water!',
-      firstAt: plant.nextWaterDate,
+      firstAt: new Date(plant.nextWaterDate),
     });
   }
 }

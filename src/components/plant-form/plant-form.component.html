@@ -1,7 +1,7 @@
 
   <div *ngIf="plant">
 
-    <ion-card>
+    <ion-card class="c-plant-form__content">
       <div class="c-plant-form__image-wrapper">
         <img *ngIf="plant.picture"
           [src]="plant.picture.url"
@@ -26,7 +26,12 @@
       </div>
 
       <ion-item>
-        <ion-label>Days between watering: {{ plant.daysBetweenWatering }}</ion-label>
+        <ion-label class="c-plant-form__label">Next water date</ion-label>
+        <ion-datetime displayFormat="D MMM" pickerFormat="D MMM" [(ngModel)]="plant.nextWaterDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="c-plant-form__label">Days between watering: {{ plant.daysBetweenWatering }}</ion-label>
         <ion-range min="1" max="14" step="1" snaps="true" color="primary" [(ngModel)]="plant.daysBetweenWatering"></ion-range>
         <p>{{ plant.daysBetweenWatering }} days</p>
       </ion-item>
