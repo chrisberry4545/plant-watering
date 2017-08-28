@@ -1,15 +1,9 @@
 <div class="c-days-before-watering">
-  <ion-grid class="c-days-before-watering__grid">
-    <ion-row class="c-days-before-watering__row">
-      <ion-col
-        *ngFor="let day of daysBeforeWateringArray"
-        col-1
-        class="c-days-before-watering__day"
-      ></ion-col>
-    </ion-row>
-  </ion-grid>
-
+  <div
+    class="c-days-before-watering__day"
+    [style.height]="daysBeforeWater / 12 * 100 + '%'"
+  ></div>
   <div class="c-days-before-watering--days">
-    {{ daysBeforeWateringArray.length }}
+    {{ daysBeforeWater }} days before water
   </div>
 </div>

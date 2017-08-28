@@ -1,37 +1,15 @@
 .c-days-before-watering {
-  border: 5px solid color($colors, primary);
   position: relative;
-  height: 50px;
-  border-radius: 5px;
+  height: 100%;
 }
 
-  .c-days-before-watering__grid {
-    padding: 0;
-    height: 100%;
-  }
-
-  .c-days-before-watering__row {
-    height: 100%;
-  }
-
   .c-days-before-watering__day {
-    background: color($colors, secondary);
-
-    &:last-of-type {
-      border-radius: 0 0% 21% 0;
-      overflow: hidden;
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: -5%;
-        right: -15%;
-        width: 30%;
-        height: 55%;
-        background: white;
-        border-radius: 51%;
-      }
-    }
+    opacity: 0.6;
+    background: color($colors, waterColor);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 
   .c-days-before-watering--days {
@@ -40,8 +18,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: color($colors, primary);
-    border-radius: 50%;
-    width: 30px;
-    height: 20px;
+    width: 75%;
+    height: 24px;
     text-align: center;
+    color: color($colors, light);
+    line-height: 22px;
+    font-weight: bold;
   }

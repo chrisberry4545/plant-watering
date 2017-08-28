@@ -3,8 +3,18 @@
 }
 
 .c-plant-list__info {
+  position: relative;
   width: 50%;
   float: left;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.c-plant-list__btns {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .c-plant-list__add-btn-wrapper {
