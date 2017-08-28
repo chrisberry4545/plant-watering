@@ -8,24 +8,29 @@
 <ion-content padding>
   <div class="c-plant-list__cards">
     <div class="c-plant-list__info"
-      *ngFor="let plant of plants"
-      [style.background-image]="plant.picture ? 'url(' + plant.picture.url + ')' : ''">
-      <days-before-water-component
-        [daysBeforeWater]="plant.daysBetweenWatering">
-      </days-before-water-component>
+      *ngFor="let plant of plants">
+
+        <div class="c-plant-list__info__inner"
+          [style.background-image]="plant.picture ? 'url(' + plant.picture.url + ')' : ''">
+          <days-before-water-component
+            [daysBeforeWater]="plant.daysBetweenWatering">
+          </days-before-water-component>
 
 
-      <div class="c-plant-list__btns">
-        <button
-          (click)="editPlant(plant)"
-          class="c-plant-list__watered-btn" ion-button>
-            <ion-icon name="settings"></ion-icon>
-        </button>
-        <button
-          (click)="wateredPlant(plant, $event)"
-          class="c-plant-list__watered-btn" ion-button>
-            <ion-icon name="water"></ion-icon>
-        </button>
+          <div class="c-plant-list__btns">
+            <button
+              (click)="editPlant(plant)"
+              class="c-plant-list__watered-btn" ion-button>
+                <ion-icon name="settings"></ion-icon>
+            </button>
+            <button
+              (click)="wateredPlant(plant, $event)"
+              class="c-plant-list__watered-btn" ion-button>
+                <ion-icon name="water"></ion-icon>
+            </button>
+
+        </div>
+
       </div>
     </div>
   </div>

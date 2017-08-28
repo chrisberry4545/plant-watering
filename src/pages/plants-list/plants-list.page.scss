@@ -3,13 +3,19 @@
 }
 
 .c-plant-list__info {
-  position: relative;
   width: 50%;
   float: left;
   height: 200px;
-  background-size: cover;
-  background-position: center;
 }
+
+  .c-plant-list__info__inner {
+    position: relative;
+    margin: 5px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid color($colors, primary);
+  }
 
 .c-plant-list__btns {
   position: absolute;
