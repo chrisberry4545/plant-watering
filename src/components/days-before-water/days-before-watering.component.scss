@@ -10,6 +10,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    transition: height 2s ease-in-out;
   }
 
   .c-days-before-watering__days-left {

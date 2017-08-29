@@ -13,7 +13,8 @@
         <div class="c-plant-list__info__inner"
           [style.background-image]="plant.picture ? 'url(' + plant.picture.url + ')' : ''">
           <days-before-water-component
-            [daysBeforeWater]="plant.daysBetweenWatering">
+            [nextWaterDate]="plant.nextWaterDate"
+            [daysBetweenWatering]="plant.daysBetweenWatering">
           </days-before-water-component>
 
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {
-  AlertController,
   NavController,
   NavParams,
 } from 'ionic-angular';
@@ -31,10 +30,13 @@ export class PlantsListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private _plantDataProvider: PlantDataProvider,
-    private _alertCtrl: AlertController,
   ) {}
 
   public ionViewDidEnter() {
+    this.init();
+  }
+
+  public init() {
     this._plantDataProvider.getPlants().subscribe((plants) => {
       this.plants = plants;
     });
@@ -54,14 +56,7 @@ export class PlantsListPage {
   ) {
     event.stopPropagation();
     this._plantDataProvider.setWatered(plant);
-    const alert = this._alertCtrl.create({
-      title: 'Thanks for watering me!',
-      buttons: [{
-        text: 'No problem!',
-        role: 'cancel',
-      }],
-    });
-    alert.present();
+    this.init();
   }
 
   public addPlant() {
